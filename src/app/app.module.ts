@@ -9,6 +9,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { AddProductsComponent } from './add-products/add-products.component';
 import { AppRoutingModule } from './app-routing.module';
 import { DescriptionComponent } from './description/description.component';
+import { ReactiveFormsModule } from '@angular/forms';
 const appRoutes: Routes = [
   { path: '', component: ProductsComponent },
   { path: 'addproduct', component: AddProductsComponent },
@@ -24,10 +25,11 @@ const appRoutes: Routes = [
     ProductsComponent,
     FooterComponent,
     AddProductsComponent,
-    DescriptionComponent
+    DescriptionComponent,
   ],
   imports: [
     BrowserModule,
+    ReactiveFormsModule,
     RouterModule.forRoot(
       appRoutes,
     ),

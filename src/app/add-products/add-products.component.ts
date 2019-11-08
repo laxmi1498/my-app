@@ -1,5 +1,6 @@
 // tslint:disable-next-line: max-line-length
 import { Component, OnInit, DoCheck, AfterViewInit, OnChanges, AfterContentInit, AfterContentChecked, AfterViewChecked, OnDestroy } from '@angular/core';
+import { FormGroup, FormControl } from '@angular/forms';
 
 // tslint:disable-next-line: no-conflicting-lifecycle
 @Component({
@@ -8,36 +9,20 @@ import { Component, OnInit, DoCheck, AfterViewInit, OnChanges, AfterContentInit,
   styleUrls: ['./add-products.component.css']
 })
 // tslint:disable-next-line: max-line-length
-export class AddProductsComponent implements  OnInit, OnChanges , DoCheck , AfterContentInit, AfterContentChecked, AfterViewInit, AfterViewChecked, OnDestroy {
+export class AddProductsComponent implements OnInit {
+  myForm: FormGroup;
 
   constructor() { }
   ngOnInit() {
-    console.log('ngOnInit');
+    this.myForm = new FormGroup({
+      name: new FormControl(''),
+      description: new FormControl(''),
+      price: new FormControl(''),
+      image: new FormControl(''),
+      isAvailable: new FormControl('')
+    });
   }
-  ngOnChanges() {
-    console.log('ngOnChanges');
-      }
-  ngDoCheck() {
-    console.log('ngDoCheck');
-
+  onSubmit(data){
+    console.log(data);
   }
-  ngAfterContentInit() {
-    console.log('AfterContentInit');
-
-  }
-  ngAfterContentChecked(){
-    console.log('AfterContentChecked');
-
-  }
-  ngAfterViewInit() {
-      console.log('AfterviewInit');
-
-  }
-  ngAfterViewChecked() {
-    console.log('Afterviewchecked');
-}
-ngOnDestroy(){
-  console.log('ngOnDestroy');
-}
-
 }
