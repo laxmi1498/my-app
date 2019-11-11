@@ -1,13 +1,14 @@
 import { Injectable } from '@angular/core';
 import { Product } from '../model/product';
 
+
 @Injectable({
   providedIn: 'root'
 })
 export class GoodProductsService {
 
   constructor() { }
-  product: Array< Product > = [
+  private product: Array< Product > = [
     {
     name: 'Orchid vase',
     image: '../assets/im1.jfif',
@@ -110,5 +111,8 @@ export class GoodProductsService {
   ];
   getProducts() {
     return this.product;
+  }
+  addNew(data) {
+    this.product.push(data);
   }
 }
