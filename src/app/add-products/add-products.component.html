@@ -1,8 +1,8 @@
 <div class="container">
     <form [formGroup]="myForm" (ngSubmit)="onSubmit(myForm)">
         <div class="form-group">
-            <label for="name">Name</label>
-            <input type="text" class="form-control" formControlName="name" placeholder="Enter Name">
+            <label for="name">Title</label>
+            <input type="text" class="form-control" formControlName="title" placeholder="Enter Name">
         </div>
         <div class="form-group">
             <label for="description">Description</label>
@@ -14,11 +14,7 @@
             </div>
             <div class="form-group">
                 <label for="Image">Image</label>
-                <input type="text" class="form-control" formControlName="image" placeholder="Image">
-            </div>
-            <div class="form-group">
-                <label for="ImageAlt">ImageAlt</label>
-                <input type="text" class="form-control" formControlName="imageAlt" placeholder="ImageAlt">
+                <input type="text" class="form-control" formControlName="imageUrl" placeholder="Image">
             </div>
 
         <div class="form-group form-check">

@@ -1,16 +1,15 @@
-<div *ngIf="item">
-    <div class="card" style="width: 18rem; cursor: grab;" *ngIf="item.isAvailable">
+
+    <div class="card" style="width: 18rem; cursor: grab;">
         <div class="container">
-            <img [src]="item.image" class="card-img-top" alt="...">
+            <img [src]="item.imageUrl" class="card-img-top" alt="...">
             <div class="card-body">
-                <h5 class="card-title">{{ item.name | lowercase }}</h5>
+                <h5 class="card-title">{{ item.title | lowercase }}</h5>
                 <p class="card-text">{{item.description}}</p>
                 <p>${{item.price}}</p>
                 <button routerLink='/description' class="btn btn-warning"
-                    [disabled]="!item.isAvailable">Details</button>
-                <button routerLink='/description' class="btn btn-primary" [disabled]="!item.isAvailable">Add To
+                    [disabled]="item.isAvailable">Details</button>
+                <button routerLink='/description' class="btn btn-primary" [disabled]="item.isAvailable">Add To
                     Cart</button>
             </div>
         </div>
     </div>
-</div>

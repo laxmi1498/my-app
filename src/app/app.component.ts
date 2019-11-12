@@ -7,5 +7,4 @@ import { Product } from './model/product';
 })
 export class AppComponent {
   title = 'my-app';
-  
 }

@@ -9,12 +9,17 @@ import { isNgTemplate } from '@angular/compiler';
 })
 
 export class ProductsComponent implements OnInit {
-product = [];
+product: any;
   constructor(private pro: GoodProductsService) {
   }
 
 getProducts(): void {
-  this.product = this.pro.getProducts();
+  // tslint:disable-next-line: deprecation
+  this.pro.getProducts().subscribe(response => {
+    console.log(response);
+    this.product = response;
+  }
+      ); // RXJS SUBSCRIBE 
 }
 
   ngOnInit() {
