@@ -2,6 +2,7 @@
 import { Component, OnInit, DoCheck, AfterViewInit, OnChanges, AfterContentInit, AfterContentChecked, AfterViewChecked, OnDestroy } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { GoodProductsService } from '../services/good-products.service';
+import { ActivatedRoute } from '@angular/router';
 
 // tslint:disable-next-line: no-conflicting-life cycle
 @Component({
@@ -12,8 +13,12 @@ import { GoodProductsService } from '../services/good-products.service';
 // tslint:disable-next-line: max-line-length
 export class AddProductsComponent implements OnInit {
   myForm: FormGroup;
+  id: any;
+  sub: any;
+  id1: string;
+  data: any;
 
-  constructor(private newProductService: GoodProductsService) { }
+  constructor(private newProductService: GoodProductsService, private route: ActivatedRoute) { }
   ngOnInit() {
     this.myForm = new FormGroup({
       // tslint:disable-next-line: max-line-length
@@ -23,16 +28,39 @@ export class AddProductsComponent implements OnInit {
       imageUrl: new FormControl(''),
       isAvailable: new FormControl('')
     });
-  }
-  onSubmit(formData) {
-    console.log(this.myForm);
-    if (this.myForm.valid) {
-    this.newProductService.addNew(this.myForm.value).subscribe(response =>{
-      console.log(response);
-    });
-    } else {
-      alert('field data not inserted');
+    this.route.params.subscribe(params => {
+      this.id = +params.id;
+      if (this.id){
+        console.log(params);
+        this.newProductService.filterProduct(this.id).subscribe(response => {
+          this.data = response;
+          this.myForm.patchValue({
+            title: this.data.title,
+            description: this.data.description,
+            imageUrl: this.data.imageUrl,
+            price: this.data.price,
+            isAvailable: this.data.isAvailable
+          });
+          console.log(this.data.title);
+
+        });
+
     }
-    console.log(formData);
-  }
+  });
+}
+  onSubmit(formData) {
+    // tslint:disable-next-line: deprecation
+   // this.route.params.subscribe(params => {
+      if (this.id) {
+        this.newProductService.updateProduct(this.myForm.value, this.id).subscribe(response => {
+          console.log(response);
+        });
+
+      } else {
+        this.newProductService.addNew(this.myForm.value).subscribe(response => {
+          console.log(response);
+        });
+      }
+//});
+}
 }

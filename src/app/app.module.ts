@@ -14,7 +14,7 @@ import { HttpClientModule } from '@angular/common/http';
 const appRoutes: Routes = [
   { path: '', component: ProductsComponent },
   { path: 'addProduct', component: AddProductsComponent },
-  { path: 'description/:id', component: DescriptionComponent },
+  { path: 'addProduct/:id', component: AddProductsComponent },
   { path: '**', redirectTo: ''}
 
 ];

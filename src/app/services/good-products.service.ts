@@ -3,10 +3,12 @@ import { Product } from '../model/product';
 import { HttpClient } from '@angular/common/http';
 
 
+
 @Injectable({
   providedIn: 'root'
 })
 export class GoodProductsService {
+  router: any;
 
   constructor( private http: HttpClient)  { }
 
@@ -112,6 +114,13 @@ export class GoodProductsService {
     return this.http.get('http://localhost:3000/product');
   }
   addNew(formData) {
-    return this.http.post('http://localhost:3000/product',formData);
+    return this.http.post('http://localhost:3000/product', formData);
+  }
+  filterProduct(id) {
+    return this.http.get('http://localhost:3000/product/' + id);
+  }
+  updateProduct(formData, id){
+    return this.http.put('http://localhost:3000/product/' + id, formData);
+
   }
 }
