@@ -6,10 +6,11 @@
                 <h5 class="card-title">{{ item.title | lowercase }}</h5>
                 <p class="card-text">{{item.description}}</p>
                 <p>${{item.price}}</p>
-                <button [routerLink]="['addProduct',item.id]"class="btn btn-warning"
+                <button [routerLink]="['edit',item.id]"class="btn btn-warning"
                     [disabled]="item.isAvailable">Details</button>
-                <button routerLink='/description' class="btn btn-primary" [disabled]="item.isAvailable">Add To
-                    Cart</button>
+                <button routerLink='/description' class="btn btn-primary" [disabled]="item.isAvailable" (click)="add()" >Add To
+                    Cart {{count}}</button>
+                <button type="submit" class="btn btn-secondary" (click)="delete(item.id)">Delete</button>  
             </div>
         </div>
     </div>

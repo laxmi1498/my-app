@@ -15,6 +15,7 @@ const appRoutes: Routes = [
   { path: '', component: ProductsComponent },
   { path: 'addProduct', component: AddProductsComponent },
   { path: 'addProduct/:id', component: AddProductsComponent },
+  { path: 'edit/:id', component: AddProductsComponent },
   { path: '**', redirectTo: ''}
 
 ];

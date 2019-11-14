@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { GoodProductsService } from '../services/good-products.service';
-import { isNgTemplate } from '@angular/compiler';
+
 
 @Component({
   selector: 'app-products',
@@ -27,6 +27,12 @@ getProducts(): void {
   ngOnInit() {
     this.getProducts();
   }
+  deleted(event) {
+    this.getProducts();
+  }
+  // incCount(count){
+  //   this.
+  // }
 
 }
 // tslint:disable-next-line: no-unused-expression

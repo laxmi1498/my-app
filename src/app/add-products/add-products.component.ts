@@ -3,6 +3,8 @@ import { Component, OnInit, DoCheck, AfterViewInit, OnChanges, AfterContentInit,
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { GoodProductsService } from '../services/good-products.service';
 import { ActivatedRoute } from '@angular/router';
+import { Router } from '@angular/router';
+
 
 // tslint:disable-next-line: no-conflicting-life cycle
 @Component({
@@ -18,7 +20,7 @@ export class AddProductsComponent implements OnInit {
   id1: string;
   data: any;
 
-  constructor(private newProductService: GoodProductsService, private route: ActivatedRoute) { }
+  constructor(private newProductService: GoodProductsService, private route: ActivatedRoute, private router: Router) { }
   ngOnInit() {
     this.myForm = new FormGroup({
       // tslint:disable-next-line: max-line-length
@@ -55,12 +57,25 @@ export class AddProductsComponent implements OnInit {
         this.newProductService.updateProduct(this.myForm.value, this.id).subscribe(response => {
           console.log(response);
         });
+        this.router.navigate([""]);
 
       } else {
         this.newProductService.addNew(this.myForm.value).subscribe(response => {
           console.log(response);
         });
+      this.router.navigate([""]);
       }
 //});
 }
-}
+// delete(formData){
+  // if (this.id) {
+  //   this.newProductService.deleteProduct(this.myForm.value, this.id).subscribe(response => {
+  //     console.log(response);
+  //     this.router.navigate([""]);
+  //   });
+    
+    
+  }
+
+
+

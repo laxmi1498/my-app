@@ -1,5 +1,5 @@
 <div class="container">
-    <form [formGroup]="myForm" (ngSubmit)="onSubmit(myForm)">
+    <form [formGroup]="myForm">
         <div class="form-group">
             <label for="name">Title</label>
             <input type="text" class="form-control" formControlName="title" placeholder="Enter Name">
@@ -21,6 +21,7 @@
             <input type="checkbox" class="form-check-input" formControlName="isAvailable">
             <label class="form-check-label" for="isAvailable">Not Available</label>
         </div>
-        <button type="submit" class="btn btn-primary">Submit</button>
+        <button type="submit" class="btn btn-primary" (click)="onSubmit(myForm)">Submit</button>
+        <!-- <button type="submit" class="btn btn-secondary" (click)="delete(myForm)">Delete</button> -->
     </form>
 </div>
